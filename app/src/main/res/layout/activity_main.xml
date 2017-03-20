@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.example.slidepuzzle.haoyu.example.slidepuzzle.MainActivity">
+
+    <haoyu.puzzlegame.slidepuzzle.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleLayout2" />
+
+
+    <GridLayout
+        android:id="@+id/gl"
+        android:columnCount="3"
+        android:rowCount="5"
+        android:layout_width="360dp"
+        android:layout_height="260dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="65dp"/>
+
+
+    <Button
+        android:textColor="#fff"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/resume"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/button"/>
+
+    <Button
+        android:text="Shuffle"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/refresh"
+        android:layout_above="@+id/resume"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/button"/>
+
+    <Button
+        android:text="Hint"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hint"
+        android:layout_above="@+id/resume"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/refresh"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/button"/>
+
+    <TextView
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/hand"
+        android:layout_toRightOf="@id/hand"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/step" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/time"
+        android:id="@+id/time"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@id/hand"
+        android:layout_alignLeft="@id/refresh"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/hand"
+        android:layout_above="@+id/refresh"
+        android:layout_marginBottom="30dp"
+        android:layout_alignLeft="@id/refresh"
+        android:id="@+id/hand" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/time"
+        android:layout_toRightOf="@id/time"
+        android:layout_marginLeft="30dp" />
+
+</RelativeLayout>

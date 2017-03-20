@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="haoyu.puzzlegame.slidepuzzle">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/puzzlegame"
+        android:label="@string/app_name"
+        android:screenOrientation="landscape"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.WelcomeActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MY_CATEGORY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.GameOver"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.GalleryActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.MainActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.SecondActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.ThirdActivity"
+            android:screenOrientation="landscape" />
+
+        <service
+            android:name="haoyu.puzzlegame.slidepuzzle.MusicGallery"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="haoyu.puzzlegame.slidepuzzle.MusicMain"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="haoyu.puzzlegame.slidepuzzle.Music"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.GameOverSecond"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="haoyu.puzzlegame.slidepuzzle.GameOverThird"
+            android:screenOrientation="landscape" />
+        <activity android:name="haoyu.puzzlegame.slidepuzzle.ScoreActivity"
+            android:screenOrientation="landscape"></activity>
+    </application>
+
+</manifest>

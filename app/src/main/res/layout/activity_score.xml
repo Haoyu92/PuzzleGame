@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_score"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.slidepuzzle.haoyu.example.slidepuzzle.ScoreActivity"
+    android:background="@drawable/bg">
+
+    <haoyu.puzzlegame.slidepuzzle.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleLayout2" />
+
+    <RelativeLayout
+        android:layout_width="510dp"
+        android:layout_height="300dp"
+        android:id="@+id/lastScore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        >
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:id="@+id/easyLastScore"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            >
+
+            <TextView
+                android:text="Easy"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/easyPart" />
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/human"
+                android:id="@+id/imageView"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:text="Unknown"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/easyPlayer" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/grade1"
+                app:srcCompat="@drawable/time"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:text="Unknown"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/easyGrade" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:id="@+id/mediumLastScore"
+            android:layout_toRightOf="@+id/easyLastScore"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:text="Medium"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mediumPart" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/human"
+                android:id="@+id/human2"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:text="Unknown"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mediumPlayer" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/time"
+                android:id="@+id/grade2"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:text="Unknown"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mediumGrade" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:id="@+id/hardLastScore"
+            android:layout_toRightOf="@+id/mediumLastScore"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:text="Hard"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hardPart" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/human"
+                android:id="@+id/human3"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:text="Unknown"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hardPlayer" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/time"
+                android:id="@+id/grade3"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:text="Unknown"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hardGrade" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="60dp"
+        app:srcCompat="@drawable/congratulations"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/imageView5" />
+</RelativeLayout>
