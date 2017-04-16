@@ -41,7 +41,7 @@ public class GalleryActivity extends AppCompatActivity {
         }
 
         gridView = (GridView) findViewById(R.id.grid);
-        gridData = new ArrayList<GridItem>();
+        gridData = new ArrayList<>();
         for (int i=0; i<img.length; i++) {
             GridItem item = new GridItem();
             item.setTitle(imgName[i]);

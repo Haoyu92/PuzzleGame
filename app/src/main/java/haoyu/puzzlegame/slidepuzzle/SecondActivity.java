@@ -44,8 +44,6 @@ public class SecondActivity extends AppCompatActivity {
     private TextView step;
     private int intStep=0;
 
-
-
     public boolean onTouchEvent(MotionEvent event) {
         return super.onTouchEvent(event);
     }
@@ -66,8 +64,6 @@ public class SecondActivity extends AppCompatActivity {
         if (actionbar != null) {
             actionbar.hide();
         }
-
-
 
         gd = new GestureDetector(this, new GestureDetector.OnGestureListener() {
             @Override
@@ -113,50 +109,9 @@ public class SecondActivity extends AppCompatActivity {
         hint = (Button) findViewById(R.id.hint);
         hint.setOnClickListener(isHint);
         refresh = (Button) findViewById(R.id.refresh);
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                level.setText("Level "+(levelNum+1));
-                timer.setBase(SystemClock.elapsedRealtime());
-                timeWhenStopped = 0;
-                timer.start();
-
-                Bitmap bm = ((BitmapDrawable)getResources().getDrawable(levelImage[levelNum])).getBitmap();
-                int bm_height = bm.getHeight() / 4;
-                int bm_width = bm.getWidth() / 3;
-                for (int i = 0; i < iv.length; i++) {
-                    for (int j = 0; j < iv[0].length; j++) {
-
-                        Bitmap bm1 = Bitmap.createBitmap(bm,j * bm_width,i * bm_height,bm_width,bm_height);
-                        iv[i][j].setImageBitmap(bm1);
-                        iv[i][j].setPadding(1,1,1,1);
-                        Box box = new Box(j,i,bm1);
-                        iv[i][j].setTag(box);
-                    }
-                }
-
-                GridLayout gl = (GridLayout) findViewById(R.id.gl);
-                gl.removeAllViews();
-                for (int i = 0; i < iv.length; i++) {
-                    for (int j = 0; j < iv[0].length; j++) {
-                        gl.addView(iv[i][j]);
-                    }
-                }
-                setNullImageView(iv[3][2]);
-                isStart = false;
-                setRandom();
-                isStart = true;
-
-                timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-                timer.start();
-                isPause = 0;
-            }
-        });
+        refresh.setOnClickListener(isRefresh);
         init();
     }
-
-
 
     private void init(){
         Bitmap bm = ((BitmapDrawable)getResources().getDrawable(R.drawable.medium_1)).getBitmap();
@@ -210,6 +165,46 @@ public class SecondActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener isRefresh = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            level.setText("Level "+(levelNum+1));
+            timer.setBase(SystemClock.elapsedRealtime());
+            timeWhenStopped = 0;
+            timer.start();
+
+            Bitmap bm = ((BitmapDrawable)getResources().getDrawable(levelImage[levelNum])).getBitmap();
+            int bm_height = bm.getHeight() / 4;
+            int bm_width = bm.getWidth() / 3;
+            for (int i = 0; i < iv.length; i++) {
+                for (int j = 0; j < iv[0].length; j++) {
+
+                    Bitmap bm1 = Bitmap.createBitmap(bm,j * bm_width,i * bm_height,bm_width,bm_height);
+                    iv[i][j].setImageBitmap(bm1);
+                    iv[i][j].setPadding(1,1,1,1);
+                    Box box = new Box(j,i,bm1);
+                    iv[i][j].setTag(box);
+                }
+            }
+
+            GridLayout gl = (GridLayout) findViewById(R.id.gl);
+            gl.removeAllViews();
+            for (int i = 0; i < iv.length; i++) {
+                for (int j = 0; j < iv[0].length; j++) {
+                    gl.addView(iv[i][j]);
+                }
+            }
+            setNullImageView(iv[3][2]);
+            isStart = false;
+            setRandom();
+            isStart = true;
+
+            timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+            timer.start();
+            isPause = 0;
+        }
+    };
 
     private View.OnClickListener isHint = new View.OnClickListener() {
         @Override
@@ -252,7 +247,6 @@ public class SecondActivity extends AppCompatActivity {
             this.p_x = x;
             this.p_y = y;
         }
-
 
         boolean isTrue() {
             return (x == p_x && y == p_y);
@@ -356,7 +350,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void setRandom(){
-        for (int i = 0; i < 800; i++) {
+        for (int i = 0; i < 80; i++) {
             int flag = (int) ((Math.random() * 4) + 1);
             moveBoxByGesture(flag,false);
         }
@@ -460,17 +454,7 @@ public class SecondActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
-
     public void hint(){
-
-        if(isPause==0){
-            resume.setText("Start");
-            timeWhenStopped = timer.getBase() - SystemClock.elapsedRealtime();
-            timer.stop();
-            isPause = 1;
-        }
-
         Context context = SecondActivity.this;
         dia = new Dialog(context, R.style.edit_AlertDialog_style);
         dia.setContentView(R.layout.hint);

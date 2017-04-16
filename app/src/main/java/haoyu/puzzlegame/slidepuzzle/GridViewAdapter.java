@@ -19,7 +19,7 @@ public class GridViewAdapter extends ArrayAdapter<GridItem> {
 
     private Context mContext;
     private int layoutResourceId;
-    private ArrayList<GridItem> mGridData = new ArrayList<GridItem>();
+    private ArrayList<GridItem> mGridData = new ArrayList<>();
 
     public GridViewAdapter(Context context, int resource, ArrayList<GridItem> objects) {
         super(context, resource, objects);

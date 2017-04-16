@@ -109,47 +109,7 @@ public class MainActivity extends AppCompatActivity {
         hint = (Button) findViewById(R.id.hint);
         hint.setOnClickListener(isHint);
         refresh = (Button) findViewById(R.id.refresh);
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                level.setText("Level "+(levelNum+1));
-                timer.setBase(SystemClock.elapsedRealtime());
-                timeWhenStopped = 0;
-                timer.start();
-
-                Bitmap bm = ((BitmapDrawable)getResources().getDrawable(levelImage[levelNum])).getBitmap();
-                int bm_height = bm.getHeight() / 3;
-                int bm_width = bm.getWidth() / 3;
-                for (int i = 0; i < iv.length; i++) {
-                    for (int j = 0; j < iv[0].length; j++) {
-
-                        Bitmap bm1 = Bitmap.createBitmap(bm,j * bm_width,i * bm_height,bm_width,bm_height);
-                        iv[i][j].setImageBitmap(bm1);
-                        iv[i][j].setPadding(1,1,1,1);
-                        Box box = new Box(j,i,bm1);
-                        iv[i][j].setTag(box);
-                    }
-                }
-
-                GridLayout gl = (GridLayout) findViewById(R.id.gl);
-                gl.removeAllViews();
-                for (int i = 0; i < iv.length; i++) {
-                    for (int j = 0; j < iv[0].length; j++) {
-                        gl.addView(iv[i][j]);
-                    }
-                }
-                setNullImageView(iv[2][2]);
-                isStart = false;
-                setRandom();
-                isStart = true;
-
-                timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-                timer.start();
-                isPause = 0;
-            }
-        });
+        refresh.setOnClickListener(isRefresh);
         init();
     }
 
@@ -206,6 +166,46 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener isRefresh = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            level.setText("Level "+(levelNum+1));
+            timer.setBase(SystemClock.elapsedRealtime());
+            timeWhenStopped = 0;
+            timer.start();
+
+            Bitmap bm = ((BitmapDrawable)getResources().getDrawable(levelImage[levelNum])).getBitmap();
+            int bm_height = bm.getHeight() / 3;
+            int bm_width = bm.getWidth() / 3;
+            for (int i = 0; i < iv.length; i++) {
+                for (int j = 0; j < iv[0].length; j++) {
+
+                    Bitmap bm1 = Bitmap.createBitmap(bm,j * bm_width,i * bm_height,bm_width,bm_height);
+                    iv[i][j].setImageBitmap(bm1);
+                    iv[i][j].setPadding(1,1,1,1);
+                    Box box = new Box(j,i,bm1);
+                    iv[i][j].setTag(box);
+                }
+            }
+
+            GridLayout gl = (GridLayout) findViewById(R.id.gl);
+            gl.removeAllViews();
+            for (int i = 0; i < iv.length; i++) {
+                for (int j = 0; j < iv[0].length; j++) {
+                    gl.addView(iv[i][j]);
+                }
+            }
+            setNullImageView(iv[2][2]);
+            isStart = false;
+            setRandom();
+            isStart = true;
+
+            timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+            timer.start();
+            isPause = 0;
+        }
+    };
+
 
     private View.OnClickListener isHint = new View.OnClickListener() {
         @Override
@@ -248,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
             this.p_x = x;
             this.p_y = y;
         }
-
 
         boolean isTrue() {
             return (x == p_x && y == p_y);
@@ -353,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setRandom(){
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 50; i++) {
             int flag = (int) ((Math.random() * 4) + 1);
             moveBoxByGesture(flag,false);
         }
@@ -406,8 +405,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void passLevel() {
 
-
-
         levelNum++;
         if(levelNum==8){
             Intent intent = new Intent(MainActivity.this, GameOver.class);
@@ -459,16 +456,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
-
     public void hint(){
-        if(isPause==0){
-            resume.setText("Start");
-            timeWhenStopped = timer.getBase() - SystemClock.elapsedRealtime();
-            timer.stop();
-            isPause = 1;
-        }
-
         Context context = MainActivity.this;
         dia = new Dialog(context, R.style.edit_AlertDialog_style);
         dia.setContentView(R.layout.hint);
